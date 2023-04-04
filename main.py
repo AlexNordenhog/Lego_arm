@@ -36,4 +36,4 @@ ev3.speaker.beep()
 #arm_motor.run_until_stalled(70, then=Stop.COAST, duty_limit=50)
 #claw_motor.run_time(-50, 2000, then=Stop.HOLD, wait=True)
 
-#test kod för github
+#test kod för github om man ska skriva i master eller main
