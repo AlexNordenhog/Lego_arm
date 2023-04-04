@@ -21,19 +21,15 @@ color_sensor = ColorSensor(Port.S2)
 
 # Write your program here.
 ev3.speaker.beep()
+"exempelkod från testet"
 #arm_motor.run_time(-100, 5, then=Stop.HOLD, wait=True)
 #arm_motor.run_until_stalled(-100, then=Stop.COAST, duty_limit=50)
-
 #claw_motor.run_until_stalled(-100, then=Stop.COAST, duty_limit=50)
 #claw_motor.run_until_stalled(100, then=Stop.COAST, duty_limit=50)
-
 #claw_motor.run_time(50, 2000, then=Stop.HOLD, wait=True) Öppnar claw 
-
 #arm_motor.run_until_stalled(-100, then=Stop.COAST, duty_limit=100)
 #claw_motor.run_time(-50, 2000, then=Stop.HOLD, wait=True)
 #arm_motor.run_until_stalled(-100, then=Stop.COAST, duty_limit=100)
 #claw_motor.run_time(50, 3000, then=Stop.HOLD, wait=True)
 #arm_motor.run_until_stalled(70, then=Stop.COAST, duty_limit=50)
 #claw_motor.run_time(-50, 2000, then=Stop.HOLD, wait=True)
-
-#test kod för github om man ska skriva i master eller main
