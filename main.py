@@ -20,7 +20,7 @@ claw_motor = Motor(Port.A)
 color_sensor = ColorSensor(Port.S2)
 
 # Write your program here.
-ev3.speaker.beep()
+ev3.speaker.beep()  
 arm_motor.control.limits(speed=100, acceleration=100)
 claw_motor.control.limits(speed=100, acceleration=100)
 
@@ -34,7 +34,30 @@ def basic_pickup():
     arm_motor.run_target(speed=100, target_angle=0)#Determine correct target
 
 def color_analyzer():
-    #awd
+    turning_motor.run_target(speed=100, target_angle=0)
+    #Down
+    arm_motor.run_target(speed=100, target_angle=-90)#Determine correct target
+    #Bite
+    claw_motor.run_target(speed=100, target_angle=90) 
+    #Up
+    arm_motor.run_target(speed=100, target_angle=0)#Determine correct target
+    #color 
+    color = color_sensor.color()
+    # Speak the detected color
+    if color == Color.BLACK:
+        print("The object is black")
+    elif color == Color.BLUE:
+        print("The object is blue")
+    elif color == Color.GREEN:
+        print("The object is green")
+    elif color == Color.YELLOW:
+        print("The object is yellow")
+    elif color == Color.RED:
+        print("The object is red")
+    elif color == Color.WHITE:
+        print("The object is white")
+    else:
+        print("The object color is unknown")
 
 def basic_drop():
     #asd
@@ -44,15 +67,15 @@ def detection():
 
 def main_menu():
     while True:
-        print("Please pick a Task for mr.robot /n asdas")
+        print("Please pick a Task for mr.robot")
         choice = input("Enter your choice: ")
         if choice == '1':
             Basic_pickup()
         elif choice == '2':
-            # func 2
+            color_analyzer()
             pass
         elif choice == '3':
-            # func 3
+            detection()
             pass
         elif choice == '4':
             break
