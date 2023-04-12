@@ -29,8 +29,8 @@ motor_turn.run_until_stalled(200, duty_limit = 50)
 
 # Drop off item
 def basic_drop():
-    claw_motor.run_time(speed=1000, time=1000, then=Stop.HOLD)
+    claw_motor.run_time(speed=100, time=1000, then=Stop.HOLD)
     #Opens the claw
 
-    claw_motor.run_time(speed=-1000, time=500, then=Stop.HOLD)
+    claw_motor.run_time(speed=-100, time=500, then=Stop.HOLD)
     #Close the claw to reset it
