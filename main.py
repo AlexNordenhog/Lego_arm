@@ -67,7 +67,27 @@ def basic_drop():
     #Close the claw to reset it
 
 def detection():
-    #fsadf
+    def detection()
+    turn = 0
+    turning_motors.run_target(speed=100, target_angle=0)
+    # re-setting the arm
+    turning_motor.run_untill_stalled(speed=100, then=Stop.Hold, duty_limit=None)
+    # Turns untill stop
+    angle = angle()
+    # Angle of the stop
+    if angle == 180:
+        turn += 0
+        turning_motor.run_untill_stalled(speed=-100, then=Stop.Hold, duty_limit=None)
+        angle = angle()
+        if angle == 180 or angle == -180:
+            print("No item found!")
+    
+    if turn == 0:
+        item_angle = angle + 5
+    elif turn == 1: 
+        item_angle = angle - 5
+    
+    print(item_angle)
 
 def main_menu():
     while True:
