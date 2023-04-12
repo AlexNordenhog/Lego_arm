@@ -60,7 +60,11 @@ def color_analyzer():
         print("The object color is unknown")
 
 def basic_drop():
-    #asd
+    claw_motor.run_time(speed=100, time=1000, then=Stop.HOLD)
+    #Opens the claw
+
+    claw_motor.run_time(speed=-1000, time=500, then=Stop.HOLD)
+    #Close the claw to reset it
 
 def detection():
     #fsadf
