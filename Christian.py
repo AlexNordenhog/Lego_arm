@@ -46,7 +46,7 @@ def detection()
     elif turn == 1: 
         item_angle = angle - 5
     
-    print(item_angle)
+    print(item_angle) 
 
     
 
