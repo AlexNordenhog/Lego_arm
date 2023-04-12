@@ -27,26 +27,33 @@ claw_motor = Motor(Port.A)
 color_sensor = ColorSensor(Port.S2)
 
 def detection()
+# Add on to hover over the item
     turn = 0
+
+# Re-setting the arm
     turning_motors.run_target(speed=100, target_angle=0)
-# re-setting the arm
-    turning_motor.run_untill_stalled(speed=100, then=Stop.Hold, duty_limit=None)
+
 # Turns untill stop
-    angle = angle()
+    turning_motor.run_untill_stalled(speed=100, then=Stop.Hold, duty_limit=None)
+
 # Angle of the stop
+    angle = angle()
+
+# If item not found in positiv direction, lego hand will try negative, if not found print message otherwise return angle
     if angle == 180:
         turn += 0
         turning_motor.run_untill_stalled(speed=-100, then=Stop.Hold, duty_limit=None)
         angle = angle()
         if angle == 180 or angle == -180:
             print("No item found!")
-    
+
+# Add on after detection to center the claw over item
     if turn == 0:
         item_angle = angle + 5
     elif turn == 1: 
         item_angle = angle - 5
-    
-    print(item_angle) 
+
+    print(item_angle)
 
     
 
