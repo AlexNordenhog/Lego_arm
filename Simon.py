@@ -27,6 +27,6 @@ ev3.speaker.beep()
 motor_turn = Motor(Port.C)
 motor_turn.run_until_stalled(200, duty_limit = 50)
 
-def determine_position:
+def determine_position():
   position = turning_motor.position
   return position
