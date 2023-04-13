@@ -14,103 +14,99 @@ from pybricks.media.ev3dev import SoundFile, ImageFile
 
 # Create your objects here.
 ev3 = EV3Brick()
-turning_motor = Motor(Port.C)
+# turning_motor = Motor(Port.C)
 arm_motor = Motor(Port.B)
 claw_motor = Motor(Port.A)
 color_sensor = ColorSensor(Port.S2)
+motor_turn = Motor(Port.C)
+touch_sensor = TouchSensor(Port.S1)
 
 # Write your program here.
 ev3.speaker.beep()  
-arm_motor.control.limits(speed=100, acceleration=100)
-claw_motor.control.limits(speed=100, acceleration=100)
 
-def basic_pickup():
-    turning_motor.run_target(speed=100, target_angle=0)
-    #Down
-    arm_motor.run_target(speed=100, target_angle=-90)#Determine correct target
-    #Bite
-    claw_motor.run_target(speed=100, target_angle=90) 
-    #Up
-    arm_motor.run_target(speed=100, target_angle=0)#Determine correct target
+# arm_motor.max_speed = 100
+# arm_motor.acceleration = 100
 
-def color_analyzer():
-    turning_motor.run_target(speed=100, target_angle=0)
-    #Down
-    arm_motor.run_target(speed=100, target_angle=-90)#Determine correct target
-    #Bite
-    claw_motor.run_target(speed=100, target_angle=90) 
-    #Up
-    arm_motor.run_target(speed=100, target_angle=0)#Determine correct target
-    #color 
-    color = color_sensor.color()
-    # Speak the detected color
-    if color == Color.BLACK:
-        print("The object is black")
-    elif color == Color.BLUE:
-        print("The object is blue")
-    elif color == Color.GREEN:
-        print("The object is green")
-    elif color == Color.YELLOW:
-        print("The object is yellow")
-    elif color == Color.RED:
-        print("The object is red")
-    elif color == Color.WHITE:
-        print("The object is white")
-    else:
-        print("The object color is unknown")
+# claw_motor.max_speed = 100
+# claw_motor.acceleration = 100
 
-def basic_drop():
-    claw_motor.run_time(speed=100, time=1000, then=Stop.HOLD)
-    #Opens the claw
 
-    claw_motor.run_time(speed=-1000, time=500, then=Stop.HOLD)
-    #Close the claw to reset it
+#Basic pickup1
+# arm_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=500)
+# claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=500)
 
-def detection():
-    def detection()
-    # Add on to hover over the item
-    turn = 0
+# arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
-    # Re-setting the arm
-    turning_motors.run_target(speed=100, target_angle=0)
+# motor_turn.run_target(speed=100, target_angle=200, then=Stop.HOLD, wait=True)
 
-    # Turns untill stop
-    turning_motor.run_untill_stalled(speed=100, then=Stop.Hold, duty_limit=None)
+# claw_motor.run_target(speed=100, target_angle=-70, then=Stop.HOLD, wait=True)  
 
-    # Angle of the stop
-    angle = angle()
+# arm_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=500)
+# claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=500)
 
-    # If item not found in positiv direction, lego hand will try negative, if not found print message otherwise return angle
-    if angle == 180:
-        turn += 0
-        turning_motor.run_untill_stalled(speed=-100, then=Stop.Hold, duty_limit=None)
-        angle = angle()
-        if angle == 180 or angle == -180:
-            print("No item found!")
+# arm_motor.run_target(speed=100, target_angle=-300)
 
-    # Add on after detection to center the claw over item
-    if turn == 0:
-        item_angle = angle + 5
-    elif turn == 1: 
-        item_angle = angle - 5
 
-    print(item_angle)
 
-def main_menu():
-    while True:
-        print("Please pick a Task for mr.robot")
-        choice = input("Enter your choice: ")
-        if choice == '1':
-            Basic_pickup()
-        elif choice == '2':
-            color_analyzer()
-            pass
-        elif choice == '3':
-            detection()
-            pass
-        elif choice == '4':
-            break
-        else:
-            ev3.speaker.say("Invalid choice")
+#Drop off
+# arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
-main_menu()
+# motor_turn.run_target(speed=100, target_angle=200, then=Stop.HOLD, wait=True)
+
+# arm_motor.run_until_stalled(200, then=Stop.HOLD, duty_limit=500)
+
+# claw_motor.run_time(speed=-80, time=1000, then=Stop.HOLD, wait=True)  
+
+# arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
+
+
+# ##Basic pickup2
+# arm_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=500)
+# claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=500)
+
+# arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
+
+# motor_turn.run_target(speed=100, target_angle=-200, then=Stop.HOLD, wait=True)
+
+# arm_motor.run_until_stalled(200, then=Stop.HOLD, duty_limit=500)
+
+# claw_motor.run_time(speed=-80, time=1000, then=Stop.HOLD, wait=True)
+
+# arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
+
+# motor_turn.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True)
+
+
+#Color
+# color = color_sensor.color()
+#     # Speak the detected color
+# if color == Color.BLACK:
+#     ev3.speaker.say("The object is black")
+# elif color == Color.BLUE:
+#     ev3.speaker.say("The object is blue")
+# elif color == Color.GREEN:
+#     ev3.speaker.say("The object is green")
+# elif color == Color.YELLOW:
+#     ev3.speaker.say("The object is yellow")
+# elif color == Color.RED:
+#     ev3.speaker.say("The object is red")
+# elif color == Color.WHITE:
+#     ev3.speaker.say("The object is white")
+# else:
+#     ev3.speaker.say("The object color is unknown")
+
+
+# # Detection
+# arm_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=50)
+# claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=50)
+
+# motor_turn.run_until_stalled(-100, then=Stop.HOLD, duty_limit=14)
+
+# if touch_sensor.pressed() == True:
+#     ev3.speaker.say("NO ITEM DETECTED")
+# else: 
+#     ev3.speaker.say("ITEM DETECTED")
+
+
+# arm_angle = motor_turn.angle()
+
