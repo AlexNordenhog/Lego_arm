@@ -24,10 +24,26 @@ touch_sensor = TouchSensor(Port.S1)
 # Write your program here.
 ev3.speaker.beep()  
 
+arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
-motor_turn.run_until_stalled(100, then=Stop.HOLD, duty_limit=14)
+motor_turn.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
-if touch_sensor.pressed() == True:
-    ev3.speaker.say("NO ITEM DETECTED")
-else: 
-    ev3.speaker.say("ITEM DETECTED")
+arm_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=15)
+
+ang = arm_motor.angle()
+
+if ang < -10:
+    ev3.speaker.say("Item detected at 90 degrees")
+else:
+    ev3.speaker.say("No item found")
+
+
+
+
+
+# motor_turn.run_until_stalled(100, then=Stop.HOLD, duty_limit=14)
+
+# if touch_sensor.pressed() == True:
+#     ev3.speaker.say("NO ITEM DETECTED")
+# else: 
+#     ev3.speaker.say("ITEM DETECTED")

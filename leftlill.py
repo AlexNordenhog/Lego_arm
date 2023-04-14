@@ -24,4 +24,4 @@ touch_sensor = TouchSensor(Port.S1)
 # Write your program here.
 ev3.speaker.beep()  
 
-motor_turn.run_target(speed=100, target_angle=-200, then=Stop.HOLD, wait=True)
+motor_turn.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
