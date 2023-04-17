@@ -14,39 +14,48 @@ from pybricks.media.ev3dev import SoundFile, ImageFile
 
 # Create your objects here.
 ev3 = EV3Brick()
-
+# turning_motor = Motor(Port.C)
+arm_motor = Motor(Port.B)
+claw_motor = Motor(Port.A)
+color_sensor = ColorSensor(Port.S2)
+motor_turn = Motor(Port.C)
+touch_sensor = TouchSensor(Port.S1)
 
 # Write your program here.
 ev3.speaker.beep()
 
-ev3 = EV3Brick()
-turning_motor = Motor(Port.C)
-arm_motor = Motor(Port.B)
-claw_motor = Motor(Port.A)
-color_sensor = ColorSensor(Port.S2)
+claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=500)
+# Lek med Angle här för att få brickan framför sensorn
+arm_motor.run_target(speed=100, target_angle=-197, then=Stop.HOLD, wait=True)
 
-
+wait(2000)
 
 color = color_sensor.color()
 # Speak the detected color
 if color == Color.BLACK:
-    ev3.speaker.say("The object is black")
+   ev3.speaker.say("The object is black")
 elif color == Color.BLUE:
-    ev3.speaker.say("The object is blue")
-    motor_turn.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
-    arm_motor.run_until_stalled(200, then=Stop.HOLD, duty_limit=500)
+   ev3.speaker.say("The object is blue")
+   motor_turn.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
+   arm_motor.run_until_stalled(200, then=Stop.HOLD, duty_limit=500)
 elif color == Color.GREEN:
-     ev3.speaker.say("The object is green")
+   ev3.speaker.say("The object is green")
 elif color == Color.YELLOW:
-    ev3.speaker.say("The object is yellow")
-    motor_turn.run_target(speed=100, target_angle=-450, then=Stop.HOLD, wait=True)
-    arm_motor.run_until_stalled(200, then=Stop.HOLD, duty_limit=500)
+   ev3.speaker.say("The object is yellow")
+   motor_turn.run_target(speed=100, target_angle=-450, then=Stop.HOLD, wait=True)
+   arm_motor.run_until_stalled(200, then=Stop.HOLD, duty_limit=500)
 elif color == Color.RED:
-    ev3.speaker.say("The object is red")
-    motor_turn.run_target(speed=100, target_angle=-600, then=Stop.HOLD, wait=True)
-    arm_motor.run_until_stalled(200, then=Stop.HOLD, duty_limit=500)
-
+   ev3.speaker.say("The object is red")
+   motor_turn.run_target(speed=100, target_angle=-600, then=Stop.HOLD, wait=True)
+   arm_motor.run_until_stalled(200, then=Stop.HOLD, duty_limit=500)
 elif color == Color.WHITE:
-    ev3.speaker.say("The object is white")
+   ev3.speaker.say("The object is white")
 else:
-    ev3.speaker.say("The object color is unknown")
+   ev3.speaker.say("The object color is unknown")
+
+
+claw_motor.run_time(speed=-80, time=1000, then=Stop.HOLD, wait=True)  
+
+arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
+
+motor_turn.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True)
