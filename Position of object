@@ -28,15 +28,22 @@ while True:
         # Read the color of the object
         object_color = color_sensor.color()
 
-        # Print the color of the object
-        if object_color == Color.RED:
-            print("The object is red")
-        elif object_color == Color.BLUE:
-            print("The object is blue")
-        elif object_color == Color.GREEN:
-            print("The object is green")
-        else:
-            print("Unknown object color")
+     color = color_sensor.color()
+       Speak the detected color
+ if color == Color.BLACK:
+    ev3.speaker.say("The object is black")
+ elif color == Color.BLUE:
+     ev3.speaker.say("The object is blue")
+  elif color == Color.GREEN:
+     ev3.speaker.say("The object is green")
+ elif color == Color.YELLOW:
+    ev3.speaker.say("The object is yellow")
+   elif color == Color.RED:
+    ev3.speaker.say("The object is red")
+   elif color == Color.WHITE:
+     ev3.speaker.say("The object is white")
+ else:
+     ev3.speaker.say("The object color is unknown")
 
         # Raise the claw to move the object
         claw_motor.run_target(500, 0)
