@@ -57,5 +57,3 @@ arm_motor.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True)
 # Open the claw
 claw_motor.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True)
 
-
-

@@ -34,7 +34,7 @@ ev3.speaker.beep()
 
 # arm_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=500)
 claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=500)
-# Lek med Angle här för att få brickan framför sensorn
+# Håller brickan framför    
 arm_motor.run_target(speed=100, target_angle=-197, then=Stop.HOLD, wait=True)
 
 wait(2000)

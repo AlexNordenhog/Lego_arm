@@ -24,9 +24,9 @@ touch_sensor = TouchSensor(Port.S1)
 # Write your program here.
 ev3.speaker.beep()  
 
-detected90 = 0
-detected135 = 0
-detected180 = 0
+# detected90 = 0
+# detected135 = 0
+# detected180 = 0
 
 arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
@@ -34,13 +34,16 @@ motor_turn.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
 arm_motor.run_until_stalled(100, then=Stop.HOLD , duty_limit=10)
 
-ang = arm_motor.angle()
+claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=50)
 
-if ang < -10: # potensiellt göra denna fast med claw istället
-    detected90 += 1 
-    # ev3.speaker.say("Item detected at 90 degrees")
-# else:
-#     ev3.speaker.say("No item found, Searching 135 degrees")
+clawang = claw_motor.angle()
+print(claw_motor.angle())
+
+if clawang < 85 and clawang > 60: # potensiellt göra denna fast med claw istället
+    # detected90 += 1 
+    ev3.speaker.say("No item deteced")
+else:
+    ev3.speaker.say("Item found")
 
 #     arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
@@ -70,10 +73,10 @@ if ang < -10: # potensiellt göra denna fast med claw istället
     
 
 
-arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
+# arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
-motor_turn.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
+# motor_turn.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
-arm_motor.run_until_stalled(100, then=Stop.HOLD , duty_limit=10)
+# arm_motor.run_until_stalled(100, then=Stop.HOLD , duty_limit=10)
 
-ang = arm_motor.angle()
+# ang = arm_motor.angle()
