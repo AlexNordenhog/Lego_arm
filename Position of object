@@ -1,0 +1,29 @@
+arm_motor = Motor(Port.B)
+claw_motor = Motor(Port.A)
+color_sensor = ColorSensor(Port.S2)
+distance_sensor = UltrasonicSensor(Port.S3)
+touch_sensor = TouchSensor(Port.S1)
+
+
+while True:
+    # Wait for the user to touch the touch sensor
+    while not touch_sensor.pressed():
+        wait(10)
+
+    # Move the arm to the position above the object
+    arm_motor.run_target(500, 30)
+
+    # Lower the claw to pick up the object
+    claw_motor.run_target(500, -60)
+
+    # Read the distance to the object
+    object_distance = distance_sensor.distance()
+
+    # Print the distance to the object
+    print("Distance to object: ", object_distance)
+
+    # Raise the claw to move the object
+    claw_motor.run_target(500, 0)
+
+    # Move the arm back to the starting position
+    arm_motor.run_target(500, 0)
