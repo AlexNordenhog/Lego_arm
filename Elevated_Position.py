@@ -34,14 +34,28 @@ ev3.speaker.beep()
     #Close the claw to reset it
 
 
- # Move the arm up 90 degrees
+# Move the arm up 90 degrees
 arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
-
-# Close the claw
-claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=50)
 
 # Move to middle
 motor_turn.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
+arm_motor.run_until_stalled(200, then=Stop.HOLD, duty_limit=50)
+
+# Close the claw
+claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=50)
+
+# Move the arm up 90 degrees
+arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
+
+# Move reset position
+motor_turn.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True)
+
 # Move the arm down to ground level 
 arm_motor.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True)
+
+# Open the claw
+claw_motor.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True)
+
+
+
