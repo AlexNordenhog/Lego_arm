@@ -25,6 +25,8 @@ arm_motor = Motor(Port.B)
 claw_motor = Motor(Port.A)
 color_sensor = ColorSensor(Port.S2)
 
+
+
 color = color_sensor.color()
 # Speak the detected color
 if color == Color.BLACK:
