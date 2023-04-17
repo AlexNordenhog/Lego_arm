@@ -25,13 +25,13 @@ while True:
 
     # Print the color of the object
     if object_color == target_color1:
-        print("The object is at the designated position")
+        ev3.speaker.say("The object is at the designated position")
      elif object_color==target_color2: 
-        print("The object is at the designated position")
+        ev3.speaker.say("The object is at the designated position")
       elif object_color==target_color3: 
-         print("The object is at the designated position")
+         ev3.speaker.say("The object is at the designated position")
       else:
-        print("The object is not at the designated position")
+         ev3.speaker.say("The object is at the designated position")
 
     # If the object is not at the designated position, move the object
     if object_color != target_color:
@@ -48,3 +48,6 @@ while True:
         # Lower the claw to release the object
         claw_motor.run_target(500, -60)
 
+        
+        
+  
