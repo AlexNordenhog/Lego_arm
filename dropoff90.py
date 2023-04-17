@@ -19,6 +19,7 @@ arm_motor = Motor(Port.B)
 claw_motor = Motor(Port.A)
 color_sensor = ColorSensor(Port.S2)
 motor_turn = Motor(Port.C)
+touch_sensor = TouchSensor(Port.S1)
 
 # Write your program here.
 ev3.speaker.beep() 
