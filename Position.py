@@ -13,10 +13,10 @@ target_color = Color.RED
 # Write your program here.
 while True:
     # Move the arm to the designated position
-    arm_motor.run_target(500, 60)
+    arm_motor.run_target(300, 60)
 
     # Lower the claw to pick up the object
-    claw_motor.run_target(500, -60)
+    claw_motor.run_target(300, -60)
 
     # Read the color of the object
     object_color = color_sensor.color()
