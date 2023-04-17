@@ -27,7 +27,7 @@ ev3.speaker.beep()
 
 arm_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=50)
 claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=50)
-motor_turn.run_until_stalled(200, then=Stop.HOLD , duty_limit=10)
+motor_turn.run_until_stalled(50, then=Stop.HOLD , duty_limit=10)
 
 if touch_sensor.pressed() == True:
     motor_turn.HOLD()
