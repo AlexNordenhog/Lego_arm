@@ -31,7 +31,7 @@ ev3.speaker.beep()
 
 arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
-motor_turn.run_target(speed=100, target_angle=200, then=Stop.HOLD, wait=True)
+motor_turn.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
 claw_motor.run_target(speed=100, target_angle=-70, then=Stop.HOLD, wait=True)  
 
