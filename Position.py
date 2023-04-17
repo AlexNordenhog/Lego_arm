@@ -1,5 +1,4 @@
-# Import necessary libraries
-from pybricks.ev3devices import Motor, ColorSensor, UltrasonicSensor
+from pybricks.ev3devices import Motor, ColorSensor
 from pybricks.parameters import Port, Color
 from pybricks.tools import wait
 
@@ -7,44 +6,29 @@ from pybricks.tools import wait
 arm_motor = Motor(Port.B)
 claw_motor = Motor(Port.A)
 color_sensor = ColorSensor(Port.S2)
-distance_sensor = UltrasonicSensor(Port.S3)
+
+# Define the target color of the object
+target_color = Color.RED
 
 # Write your program here.
 while True:
-    # Move the arm to the position above the object
-    arm_motor.run_target(500, 30)
+    # Move the arm to the designated position
+    arm_motor.run_target(500, 60)
 
     # Lower the claw to pick up the object
     claw_motor.run_target(500, -60)
 
-    # Read the distance to the object
-    object_distance = distance_sensor.distance()
+    # Read the color of the object
+    object_color = color_sensor.color()
 
-    # Print the distance to the object
-    print("Distance to object: ", object_distance)
+    # Print the color of the object
+    if object_color == target_color:
+        print("The object is at the designated position")
+    else:
+        print("The object is not at the designated position")
 
-    # If the object is within range of the distance sensor, move the object
-    if object_distance < 100:
-        # Read the color of the object
-        object_color = color_sensor.color()
-
-     color = color_sensor.color()
-       Speak the detected color
- if color == Color.BLACK:
-    ev3.speaker.say("The object is black")
- elif color == Color.BLUE:
-     ev3.speaker.say("The object is blue")
-  elif color == Color.GREEN:
-     ev3.speaker.say("The object is green")
- elif color == Color.YELLOW:
-    ev3.speaker.say("The object is yellow")
-   elif color == Color.RED:
-    ev3.speaker.say("The object is red")
-   elif color == Color.WHITE:
-     ev3.speaker.say("The object is white")
- else:
-     ev3.speaker.say("The object color is unknown")
-
+    # If the object is not at the designated position, move the object
+    if object_color != target_color:
         # Raise the claw to move the object
         claw_motor.run_target(500, 0)
 
@@ -52,7 +36,7 @@ while True:
         arm_motor.run_target(500, 0)
 
         # Wait for the user to move the object
-        while distance_sensor.distance() < 100:
+        while color_sensor.color() != target_color:
             wait(10)
 
         # Lower the claw to release the object
