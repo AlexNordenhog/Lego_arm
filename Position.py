@@ -8,7 +8,9 @@ claw_motor = Motor(Port.A)
 color_sensor = ColorSensor(Port.S2)
 
 # Define the target color of the object
-target_color = Color.RED
+target_color1 = Color.RED
+target_color2 = Color.Blue
+target_color3 =Color.Yellow
 
 # Write your program here.
 while True:
@@ -22,8 +24,12 @@ while True:
     object_color = color_sensor.color()
 
     # Print the color of the object
-    if object_color == target_color:
+    if object_color == target_color1:
         print("The object is at the designated position")
+     elif object_color==target_color2: 
+        print("The bject is at the designated position")
+       elif object_color==target_color3: 
+         print("The bject is at the designated position")
     else:
         print("The object is not at the designated position")
 
