@@ -14,24 +14,34 @@ from pybricks.media.ev3dev import SoundFile, ImageFile
 
 # Create your objects here.
 ev3 = EV3Brick()
-# turning_motor = Motor(Port.C)
+turning_motor = Motor(Port.C)
 arm_motor = Motor(Port.B)
 claw_motor = Motor(Port.A)
 color_sensor = ColorSensor(Port.S2)
-motor_turn = Motor(Port.C)
-touch_sensor = TouchSensor(Port.S1)
+
 
 # Write your program here.
-ev3.speaker.beep()  
+ev3.speaker.beep()
 
-# Move the arm up 90 degrees
+# Testing
+
+# Drop off item
+#def basic_drop():
+    #claw_motor.run_time(speed=100, time=1000, then=Stop.HOLD)
+    #Opens the claw
+
+    #claw_motor.run_time(speed=-1000, time=500, then=Stop.HOLD)
+    #Close the claw to reset it
+
+
+ # Move the arm up 90 degrees
 arm_motor.run_target(speed=1000, target_angle=-300, then=Stop.HOLD, wait=True)
 
-# Open the claw
-# claw_motor.run_target(speed=1000, target_angle=45, then=Stop.HOLD, wait=True)
-
-# Move the arm down 90 degrees
-arm_motor.run_target(speed=1000, target_angle=0, then=Stop.HOLD, wait=True)
-
 # Close the claw
-claw_motor.run_target(speed=1000, target_angle=0, then=Stop.HOLD, wait=True)
+claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=500)
+
+# Move to middle
+motor_turn.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
+
+# Move the arm down to ground level 
+arm_motor.run_target(speed=1000, target_angle=0, then=Stop.HOLD, wait=True)
