@@ -28,9 +28,9 @@ while True:
         print("The object is at the designated position")
      elif object_color==target_color2: 
         print("The bject is at the designated position")
-       elif object_color==target_color3: 
+      elif object_color==target_color3: 
          print("The bject is at the designated position")
-    else:
+      else:
         print("The object is not at the designated position")
 
     # If the object is not at the designated position, move the object
