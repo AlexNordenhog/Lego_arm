@@ -1,0 +1,38 @@
+from pybricks.hubs import EV3Brick
+from pybricks.ev3devices import Motor, TouchSensor, ColorSensor
+from pybricks.parameters import Port
+
+# Initialize the EV3 brick and motors/sensors
+ev3 = EV3Brick()
+motor_turn = Motor(Port.C)
+motor_arm = Motor(Port.B)
+motor_claw = Motor(Port.A)
+limiter = TouchSensor(Port.S1)
+color = ColorSensor(Port.S2)
+
+# Define a function to get the object position
+def get_object_position():
+    # Turn the arm to the position that is level with the object
+    motor_arm.run_until_stalled(150, then=Motor.STOP)
+    # Move the claw to the open position
+    motor_claw.run_time(-500, 1000)
+    # Wait for the claw to open
+    wait(1000)
+    # Check if the claw has closed on an object
+    if limiter.pressed():
+        # Move the arm up to a safe position
+        motor_arm.run_angle(150, 90)
+        # Get the color and distance of the object
+        color_reading = color.color()
+        distance_reading = color.distance()
+        # Return the position of the object
+        return (color_reading, distance_reading)
+    else:
+        # Return None if the claw did not close on an object
+        return None
+
+# Call the function to get the position of the object
+object_position = get_object_position()
+
+# Print the object position
+print("Object position: ", object_position)
