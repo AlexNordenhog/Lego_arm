@@ -40,7 +40,7 @@ arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 # Move to middle
 motor_turn.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
-arm_motor.run_until_stalled(200, then=Stop.HOLD, duty_limit=50)
+arm_motor.run_until_stalled(200, then=Stop.HOLD, duty_limit=10)
 
 # Close the claw
 claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=50)
