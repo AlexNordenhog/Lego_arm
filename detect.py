@@ -39,6 +39,7 @@ claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=50)
 clawang = claw_motor.angle()
 print(claw_motor.angle())
 
+#Detect 
 if clawang < 85 and clawang > 60: # potensiellt göra denna fast med claw istället
     # detected90 += 1 
     ev3.speaker.say("No item deteced")
