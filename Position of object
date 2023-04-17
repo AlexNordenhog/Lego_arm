@@ -1,3 +1,8 @@
+from pybricks.ev3devices import Motor, ColorSensor, TouchSensor, UltrasonicSensor
+from pybricks.parameters import Port, Color
+from pybricks.tools import wait
+
+
 arm_motor = Motor(Port.B)
 claw_motor = Motor(Port.A)
 color_sensor = ColorSensor(Port.S2)
