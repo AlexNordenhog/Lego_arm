@@ -24,7 +24,7 @@ touch_sensor = TouchSensor(Port.S1)
 # Write your program here.
 ev3.speaker.beep() 
 
-# Turns 90 degrees and drops off the item
+# Turns 135 degrees and drops off the item
 claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=500) #Closes claw
 
 arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True) #Raises the arm
@@ -36,3 +36,4 @@ arm_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=500) #Lowers the ar
 claw_motor.run_target(speed=100, target_angle=-70, then=Stop.HOLD, wait=True) #Opens the claw
 
 arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True) #Raises the arm again
+
