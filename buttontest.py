@@ -55,16 +55,16 @@ def pick_angle(pickangle):
 
 while True:
     # Check which buttons are pressed
-    pressed = ev3.buttons.pressed()
-    # Drive forward if the Up button is pressed
+    pressed = ev3.buttons.pressed() 
+    # 90 degreeif the Up button is pressed
     if Button.UP in pressed:
         pick_angle(-300)
         reset_robot()
-    # Drive backward if the Down button is pressed
+    # 135 degree if the Down button is pressed
     elif Button.DOWN in pressed:
         pick_angle(-450)
         reset_robot()
-    # Turn left if the Left button is pressed
+    # 180 degree if the Left button is pressed
     elif Button.LEFT in pressed:
         pick_angle(-600)
         reset_robot()
