@@ -24,60 +24,104 @@ touch_sensor = TouchSensor(Port.S1)
 # Write your program here.
 ev3.speaker.beep()  
 
-# detected90 = 0
-# detected135 = 0
-# detected180 = 0
 
-arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
+def test():
+    # detected90 = 0
+    # detected135 = 0
+    # detected180 = 0
 
-motor_turn.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
+    arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
-arm_motor.run_until_stalled(100, then=Stop.HOLD , duty_limit=10)
+    motor_turn.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
-claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=50)
+    arm_motor.run_until_stalled(100, then=Stop.HOLD , duty_limit=10)
 
-clawang = claw_motor.angle()
-print(claw_motor.angle())
+    claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=50)
 
-#Detect 
-if clawang < 85 and clawang > 60: # potensiellt göra denna fast med claw istället
-    # detected90 += 1 
-    ev3.speaker.say("No item deteced")
-else:
-    ev3.speaker.say("Item found")
+    clawang = claw_motor.angle()
+    print(claw_motor.angle())
+    #Detect 
+    if clawang < 85 and clawang > 60:
+        # detected90 += 1 
+        ev3.speaker.say("No item deteced")
+    else:
+        ev3.speaker.say("Item found")
 
-#     arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
+    #     arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
-#     motor_turn.run_target(speed=100, target_angle=-150, then=Stop.HOLD, wait=True)
+    #     motor_turn.run_target(speed=100, target_angle=-150, then=Stop.HOLD, wait=True)
 
-#     arm_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=15)
+    #     arm_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=15)
 
-#     ang = arm_motor.angle()
+    #     ang = arm_motor.angle()
 
-#     if ang < -10:
-#         ev3.speaker.say("Item detected at 135 degrees")
-#     else:
-#         ev3.speaker.say("No item found, Searching 180 degrees")
+    #     if ang < -10:
+    #         ev3.speaker.say("Item detected at 135 degrees")
+    #     else:
+    #         ev3.speaker.say("No item found, Searching 180 degrees")
 
-#         arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
+    #         arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
-#         motor_turn.run_target(speed=100, target_angle=-150, then=Stop.HOLD, wait=True)
+    #         motor_turn.run_target(speed=100, target_angle=-150, then=Stop.HOLD, wait=True)
 
-#         arm_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=15)
+    #         arm_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=15)
 
-#         ang = arm_motor.angle()
+    #         ang = arm_motor.angle()
 
-#         if ang < -10:
-#             ev3.speaker.say("Item detected at 180 degrees")
-#         else: 
-#             ev3.speaker.say("No item found")
+    #         if ang < -10:
+    #             ev3.speaker.say("Item detected at 180 degrees")
+    #         else: 
+    #             ev3.speaker.say("No item found")
+        
+
+
+    # arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
+
+    # motor_turn.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
+
+    # arm_motor.run_until_stalled(100, then=Stop.HOLD , duty_limit=10)
+
+    # ang = arm_motor.angle()
+
+
+def detect_item():
     
+    clawang = claw_motor.angle()
+
+    print(claw_motor.angle())
+
+    if clawang < 85 and clawang > 60: 
+        ev3.speaker.say("No item deteced")
+
+    else:
+        ev3.speaker.say("Item found")
 
 
-# arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
+def check_angle(angle):
+    arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
-# motor_turn.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
+    motor_turn.run_target(speed=100, target_angle=angle, then=Stop.HOLD, wait=True)
 
-# arm_motor.run_until_stalled(100, then=Stop.HOLD , duty_limit=10)
+    arm_motor.run_until_stalled(100, then=Stop.HOLD, duty_limit=10)
 
-# ang = arm_motor.angle()
+    claw_motor.run_until_stalled(200, then=Stop.HOLD, duty_limit=50)
+
+    detect_item()
+
+    reset_robot()
+
+
+def reset_robot():
+    arm_motor.run_until_stalled(200, then=Stop.HOLD, duty_limit=50)
+
+    claw_motor.run_until_stalled(200, then=Stop.HOLD, duty_limit=50)
+
+    motor_turn.run_until_stalled(300, then=Stop.HOLD, duty_limit=15)
+
+    claw_motor.run_target(speed=100, target_angle=-70, then=Stop.HOLD, wait=True)
+
+
+reset_robot()
+check_angle(-300)
+check_angle(-450)
+check_angle(-600)
