@@ -31,9 +31,9 @@ def dropoff(angle):
 
     motor_turn.run_target(speed=100, target_angle=angle, then=Stop.HOLD, wait=True) #Turns the arm x degrees
 
-    arm_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=500) #Lowers the arm
+    arm_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=100) #Lowers the arm
 
-    claw_motor.run_target(speed=100, target_angle=-70, then=Stop.HOLD, wait=True) #Opens the claw
+    claw_motor.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True) #Opens the claw
 
     arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True) #Raises the arm
 
