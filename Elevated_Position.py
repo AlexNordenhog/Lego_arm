@@ -33,32 +33,32 @@ ev3.speaker.beep()
     #claw_motor.run_time(speed=-1000, time=500, then=Stop.HOLD)
     #Close the claw to reset it
 
-def elevated_position():
-    # Move the arm up 90
-    arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
+# def elevated_position():
+#     # Move the arm up 90
+#     arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
-    # Move to middle
-    motor_turn.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
+#     # Move to middle
+#     motor_turn.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
-    # Move to object
-    arm_motor.run_until_stalled(200, then=Stop.HOLD, duty_limit=10)
+#     # Move to object
+#     arm_motor.run_until_stalled(200, then=Stop.HOLD, duty_limit=10)
 
-    # Close the claw
-    claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=50)
+#     # Close the claw
+#     claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=50)
 
-    # Move the arm up 90 degrees
-    arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
+#     # Move the arm up 90 degrees
+#     arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
-    # Move reset position
-    motor_turn.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True)
+#     # Move reset position
+#     motor_turn.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True)
 
-    # Move the arm down to ground level 
-    arm_motor.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True)
+#     # Move the arm down to ground level 
+#     arm_motor.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True)
 
-    # Open the claw
-    claw_motor.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True)
+#     # Open the claw
+#     claw_motor.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True)
     
-    def pickup_zones():
+def pickup_zones():
         # Move the arm up 90
     arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
@@ -74,17 +74,19 @@ def elevated_position():
     # Move the arm up 90 degrees
     arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
 
-    position = int(input('Which position to drop off'))
-    if position = 1:
+    position = int(input('Which position to drop off:\n1 for 135 degrees\n2 for 180 degrees\n'))
+    if position == 1:
         motor_turn.run_target(speed=100, target_angle=-450, then=Stop.HOLD, wait=True)
         arm_motor.run_until_stalled(200, then=Stop.HOLD, duty_limit=10)
         claw_motor.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True)
         arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
         motor_turn.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True)
-    elif position = 2:
+    elif position == 2:
         motor_turn.run_target(speed=100, target_angle=-600, then=Stop.HOLD, wait=True)
         arm_motor.run_until_stalled(200, then=Stop.HOLD, duty_limit=10)
         claw_motor.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True)
         arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True)
         motor_turn.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True)
 
+
+pickup_zones()
