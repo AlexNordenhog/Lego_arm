@@ -62,6 +62,17 @@ def check_pos_color(pos):
     claw_motor.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True)  
 
 
-check_pos_color(-300)
-check_pos_color(-450)
-check_pos_color(-600)
+choice=4
+
+while choice != '0':
+    ev3.speaker.say('Which angle do you want to drop off at? Input 1 for 90 degrees, 2 for 135 and 3 for 180 degrees. Input 0 to ends the function.')
+    choice = input('Which angle do you want to drop off at? Input 1 for 90 degrees, 2 for 135 and 3 for 180 degrees. Input 0 to ends the function.')
+    if choice == '1':
+        check_pos_color(-300)   
+    elif choice == '2':
+        check_pos_color(-450)
+    elif choice == '3':
+        check_pos_color(-600)
+
+
+
