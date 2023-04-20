@@ -30,7 +30,7 @@ def detect_item():
 
     print(claw_motor.angle())
 
-    if clawang < 85 and clawang > 60: 
+    if clawang < 95 and clawang > 65: 
         ev3.speaker.say("No item detected")
 
     else:
