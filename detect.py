@@ -91,7 +91,7 @@ def detect_item():
     print(claw_motor.angle())
 
     if clawang < 85 and clawang > 60: 
-        ev3.speaker.say("No item deteced")
+        ev3.speaker.say("No item detected")
 
     else:
         ev3.speaker.say("Item found")
@@ -108,7 +108,8 @@ def check_angle(angle):
 
     detect_item()
 
-    reset_robot()
+    claw_motor.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True)
+
 
 
 def reset_robot():
@@ -121,7 +122,6 @@ def reset_robot():
     claw_motor.run_target(speed=100, target_angle=-70, then=Stop.HOLD, wait=True)
 
 
-reset_robot()
 check_angle(-300)
 check_angle(-450)
 check_angle(-600)
