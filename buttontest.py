@@ -52,10 +52,15 @@ def pick_angle(pickangle):
 
     claw_motor.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True)
 
+# print(pressed)
+
+
+print(ev3.buttons.pressed())
 
 while True:
     # Check which buttons are pressed
     pressed = ev3.buttons.pressed() 
+    
     # 90 degreeif the Up button is pressed
     if Button.UP in pressed:
         pick_angle(-300)
