@@ -28,13 +28,20 @@ def detect_item():
     
     clawang = claw_motor.angle()
 
-    print(claw_motor.angle())
+    # print(claw_motor.angle())
 
     if clawang < 95 and clawang > 65: 
         ev3.speaker.say("No item detected")
 
     else:
-        ev3.speaker.say("Item found")
+        print(motor_turn.angle())
+        if motor_turn.angle() == -300:
+            ev3.speaker.say("Item found at 90 degree")
+        elif motor_turn.angle() == -450:
+            ev3.speaker.say("Item found at 135 degree")
+        elif motor_turn.angle() == -600:
+            ev3.speaker.say("Item found at 180 degree")
+        
 
 
 def check_angle(angle):
