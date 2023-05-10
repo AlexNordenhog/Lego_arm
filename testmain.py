@@ -16,27 +16,11 @@ from pybricks.media.ev3dev import SoundFile, ImageFile
 ev3 = EV3Brick()
 
 arm_motor = Motor(Port.B, Direction.COUNTERCLOCKWISE, [8, 40])
-
-# Configure the motor that rotates the base. It has a 12-teeth and a
-# 36-teeth gear connected to it. We would like positive speed values
-# to make the arm go away from the Touch Sensor. This corresponds
-# to counterclockwise rotation of the motor.
 motor_turn = Motor(Port.C, Direction.COUNTERCLOCKWISE, [12, 36])
-
-# Limit the elbow and base accelerations. This results in
-# very smooth motion. Like an industrial robot.
 arm_motor.control.limits(speed=60, acceleration=120)
 motor_turn.control.limits(speed=60, acceleration=120)
-
-# Set up the Touch Sensor. It acts as an end-switch in the base
-# of the robot arm. It defines the starting point of the base.
 touch_sensor = TouchSensor(Port.S1)
-
-# Set up the Color Sensor. This sensor detects when the elbow
-# is in the starting position. This is when the sensor sees the
-# white beam up close.
 color_sensor = ColorSensor(Port.S2)
-
 claw_motor = Motor(Port.A)
 
 # Write your program here.
