@@ -23,6 +23,23 @@ color_sensor = ColorSensor(Port.S2)
 # Write your program here.
 ev3.speaker.beep()
 
+def pickup(angle):
+    arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True) #Raises the arm
+
+    motor_turn.run_target(speed=100, target_angle=angle, then=Stop.HOLD, wait=True) #Turns the arm x degrees
+
+    arm_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=500) #Lowers the arm
+
+    claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=500) #Closes claw
+
+    arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True) #Raises the arm again
+
+    motor_turn.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True) #Returns arm to 0 degrees
+
+    arm_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=500) #Lowers the arm
+
+    claw_motor.run_target(speed=100, target_angle=-70, then=Stop.HOLD, wait=True) #Opens the claw
+
 # Set the time to sort items (24-hour format)
 sort_time = "14:30"
 
@@ -33,6 +50,16 @@ while True:
 
     # Check if it's time to sort the items
     if current_time == sort_time:
+        choice = '4'
+
+        while choice != '0':
+            choice = input('Which angle do you want to pick up an item from? Input 1 for 90 degrees, 2 for 135 and 3 for 180 degrees. Input 0 to end the function.')
+            if choice == '1':
+                pickup(-300)
+            elif choice == '2':
+                pickup(-450)
+            elif choice == '3':
+                pickup(-600)
     
 
     # Wait for 1 minute before checking the time again
