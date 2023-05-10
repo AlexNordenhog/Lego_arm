@@ -77,12 +77,6 @@ def arm_reset():
 ev3.buttons.pressed()
 banan = 0
 while banan < 3:
-    # if banan == 0:
-    #     print('Guide the arm to the pick up zone.')
-    # elif banan == 1:
-    #     print('Guide the arm to the first drop off zone.')
-    # elif banan == 2:
-    #     print('Guide the arm to the second drop off zone.')
     try:
         if str(ev3.buttons.pressed()[0]) == "Button.UP":
             arm_motor.run(15)
