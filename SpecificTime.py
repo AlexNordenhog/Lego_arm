@@ -41,12 +41,12 @@ def pickup(angle):
     claw_motor.run_target(speed=100, target_angle=-70, then=Stop.HOLD, wait=True) #Opens the claw
 
 # Set the time to sort items (24-hour format)
-sort_time = "10:42"
+sort_time = "11:19"
 
 # Loop until the sort time is reached
 while True:
     # Get the current time in 24-hour format
-    current_time = ev3.time().strftime("%H:%M")
+    current_time = ev3.time().strtime("%H:%M")
 
     # Check if it's time to sort the items
     if current_time == sort_time:
