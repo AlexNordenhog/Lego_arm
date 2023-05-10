@@ -41,7 +41,7 @@ def pickup(angle):
     claw_motor.run_target(speed=100, target_angle=-70, then=Stop.HOLD, wait=True) #Opens the claw
 
 # Set the time to sort items (24-hour format)
-sort_time = "14:30"
+sort_time = "10:42"
 
 # Loop until the sort time is reached
 while True:
@@ -50,17 +50,13 @@ while True:
 
     # Check if it's time to sort the items
     if current_time == sort_time:
-        choice = '4'
-
-        while choice != '0':
-            choice = input('Which angle do you want to pick up an item from? Input 1 for 90 degrees, 2 for 135 and 3 for 180 degrees. Input 0 to end the function.')
-            if choice == '1':
-                pickup(-300)
-            elif choice == '2':
-                pickup(-450)
-            elif choice == '3':
-                pickup(-600)
+        ev3.speaker.say("TIMEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+        break
+    else:
+        print("haba")
+        wait(10000)
+        continue
     
 
     # Wait for 1 minute before checking the time again
-    wait(60000)
+    wait(30000)
