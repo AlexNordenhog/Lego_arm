@@ -23,6 +23,8 @@ color_sensor = ColorSensor(Port.S2)
 # Write your program here.
 ev3.speaker.beep()
 
+import datetime
+
 def pickup(angle):
     arm_motor.run_target(speed=100, target_angle=-300, then=Stop.HOLD, wait=True) #Raises the arm
 
@@ -46,7 +48,8 @@ sort_time = "10:42"
 # Loop until the sort time is reached
 while True:
     # Get the current time in 24-hour format
-    current_time = ev3.time().strftime("%H:%M")
+    # current_time = ev3.time().strftime("%H:%M")
+    current_time = datetime.datetime.now().strftime("%H:%M")
 
     # Check if it's time to sort the items
     if current_time == sort_time:
