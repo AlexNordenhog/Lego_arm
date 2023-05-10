@@ -77,12 +77,12 @@ def arm_reset():
 ev3.buttons.pressed()
 banan = 0
 while banan < 3:
-    if banan == 0:
-        print('Guide the arm to the pick up zone.')
-    elif banan == 1:
-        print('Guide the arm to the first drop off zone.')
-    elif banan == 2:
-        print('Guide the arm to the second drop off zone.')
+    # if banan == 0:
+    #     print('Guide the arm to the pick up zone.')
+    # elif banan == 1:
+    #     print('Guide the arm to the first drop off zone.')
+    # elif banan == 2:
+    #     print('Guide the arm to the second drop off zone.')
     try:
         if str(ev3.buttons.pressed()[0]) == "Button.UP":
             arm_motor.run(15)
@@ -112,7 +112,7 @@ claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=500) #Closes claw
 arm_reset() #Raises the arm
 motor_turn.run_target(speed=100, target_angle=rotation_position[1], then=Stop.HOLD, wait=True) #Turns the arm to the first dropoff zone
 arm_motor.run_target(speed=100, target_angle=arm_position[1], then=Stop.HOLD, wait=True) #Lowers the arm to the first dropoff zone
-claw_motor.run_target(speed=100, target_angle=-70, then=Stop.HOLD, wait=True) #Opens the claw
+claw_motor.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True) #Opens the claw
 
 arm_reset() #Raises the arm
 motor_turn.run_target(speed=100, target_angle=rotation_position[0], then=Stop.HOLD, wait=True) #Turns the arm to the pickup zone
@@ -122,7 +122,7 @@ claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=500) #Closes claw
 arm_reset() #Raises the arm
 motor_turn.run_target(speed=100, target_angle=rotation_position[2], then=Stop.HOLD, wait=True) #Turns the arm to the second dropoff zone
 arm_motor.run_target(speed=100, target_angle=arm_position[2], then=Stop.HOLD, wait=True) #Lowers the arm to the second dropoff zone
-claw_motor.run_target(speed=100, target_angle=-70, then=Stop.HOLD, wait=True) #Opens the claw
+claw_motor.run_target(speed=100, target_angle=0, then=Stop.HOLD, wait=True) #Opens the claw
 arm_reset() #Raises the arm
 
 
