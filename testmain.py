@@ -36,7 +36,7 @@ def arm_reset():
 
 ev3.buttons.pressed()
 banan = 0
-while banan < 10:
+while banan < 3:
     try:
         if str(ev3.buttons.pressed()[0]) == "Button.UP":
             arm_motor.run(15)
@@ -50,6 +50,8 @@ while banan < 10:
             arm_position.append(arm_motor.angle())
             rotation_position.append(motor_turn.angle())
             wait(2000)
+            print(arm_position)
+            print(rotation_position)
             arm_reset()
 
     except:
