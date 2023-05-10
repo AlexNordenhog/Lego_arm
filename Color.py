@@ -66,7 +66,7 @@ def color_checker():
 # if color == Color.BLACK:
 #     ev3.speaker.say("The object is black")
 # elif color == Color.BLUE:
-#     ev3.speaker.say("The object is blue")
+#     ev3.speaker.say("The object is blue") 
 # elif color == Color.GREEN:
 #     ev3.speaker.say("The object is green")
 # elif color == Color.YELLOW:

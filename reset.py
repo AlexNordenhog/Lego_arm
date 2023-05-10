@@ -25,7 +25,7 @@ touch_sensor = TouchSensor(Port.S1)
 ev3.speaker.beep()
 
 
-arm_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=50)
+arm_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=70)
 claw_motor.run_until_stalled(200, then=Stop.HOLD , duty_limit=50)
 motor_turn.run_until_stalled(500, then=Stop.HOLD , duty_limit=15)
 

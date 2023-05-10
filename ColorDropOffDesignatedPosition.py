@@ -40,6 +40,8 @@ elif color == Color.BLUE:
    arm_motor.run_until_stalled(200, then=Stop.HOLD, duty_limit=500)
 elif color == Color.GREEN:
    ev3.speaker.say("The object is green")
+   otor_turn.run_target(speed=100, target_angle=-450, then=Stop.HOLD, wait=True)
+   arm_motor.run_until_stalled(200, then=Stop.HOLD, duty_limit=500)
 elif color == Color.YELLOW:
    ev3.speaker.say("The object is yellow")
    motor_turn.run_target(speed=100, target_angle=-450, then=Stop.HOLD, wait=True)

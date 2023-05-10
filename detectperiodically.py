@@ -22,7 +22,7 @@ motor_turn = Motor(Port.C)
 touch_sensor = TouchSensor(Port.S1)
 
 # Write your program here.
-ev3.speaker.beep()  
+ev3.speaker.beep()
 
 def detect_item():
     

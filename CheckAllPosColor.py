@@ -65,7 +65,7 @@ def check_pos_color(pos):
 choice=4
 
 while choice != '0':
-    ev3.speaker.say('Which angle do you want to drop off at? 1 for 90 degrees, 2 for 135 3 for 180.')
+    print('Which angle do you want to drop off at? 1 for 90 degrees, 2 for 135 3 for 180.')
     choice = input('Which angle do you want to drop off at? Input 1 for 90 degrees, 2 for 135 and 3 for 180 degrees. Input 0 to ends the function.')
     if choice == '1':
         check_pos_color(-300)   
