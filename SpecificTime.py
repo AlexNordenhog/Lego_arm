@@ -48,7 +48,9 @@ sort_time = "11:19"
 # Loop until the sort time is reached
 while True:
     # Get the current time in 24-hour format
-    current_time = ev3.time().strftime("%H:%M")
+    # current_time = ev3.time().strftime("%H:%M")
+    current_time = datetime.datetime.now().strftime("%H:%M")
+
 
     # Check if it's time to sort the items
     if current_time == sort_time:
